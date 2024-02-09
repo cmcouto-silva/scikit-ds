@@ -9,7 +9,9 @@ setup(
     license='LICENSE',
     description='Scientific toolkit for data science',
     install_requires=[
-        'pandas>=1.0.0',
+        'numpy',
+        'pandas',
+        'scikit-learn',
     ],
     entry_points={
         'console_scripts': [
