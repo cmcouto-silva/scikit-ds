@@ -1,0 +1,18 @@
+import os
+from pdf2image import convert_from_path
+
+
+def rasterize_file(pdf_path, output_folder=None, output_format='png'):
+    # If output_folder isn't specified, use the pdf_path, 
+    if not output_folder:
+        output_folder = os.path.splitext(pdf_path)[0]
+    print(output_folder)
+    # Create directory for the output images
+    os.makedirs(output_folder, exist_ok=True)
+    # Convert pdf pages to images
+    images = convert_from_path(pdf_path)
+    # Save images
+    for i,image in enumerate(images, start=1):
+        print(f'{output_folder}/page_{i}.{output_format}')
+        image.save(f'{output_folder}/page_{i}.{output_format}', output_format.upper())
+    
